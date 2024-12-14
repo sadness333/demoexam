@@ -1,4 +1,5 @@
 from database.connection import session
+from database.connection import Base, engine
 
 from database.models.MaterialModel import MaterialModel
 from database.models.ProductTypeModel import ProductTypeModel
@@ -78,6 +79,10 @@ orders_data = [
     {"fk_product_id": "1", "fk_company_id": "5", "quantity_of_products": "35000", "date_of_create": "2024-04-15"},
     {"fk_product_id": "5", "fk_company_id": "5", "quantity_of_products": "25000", "date_of_create": "2024-06-12"},
 ]
+
+#создание таблиц
+Base.metadata.create_all(engine)
+
 # Добавление данных в таблицу
 insert_data(MaterialModel, materials_data)
 insert_data(ProductTypeModel, products_type_data)
